@@ -1,0 +1,17 @@
+{% extends 'imageapp/base.html' %}
+{% block body_block %}
+{% if request.user.is_authenticated %}
+<div class="row bg-info">
+    {% for img in user_images %}
+    <div class="col-4 py-2">
+        <div class="card">
+    <img src="{{img.photo.url}}"  height="200px" width="">
+            <p class="card-text text-center text-muted">{{img.upload_time}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>Please login to use this.</p>
+{% endif %}
+{% endblock %}

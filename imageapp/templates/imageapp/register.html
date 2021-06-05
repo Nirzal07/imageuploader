@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</head>
+<body class="text-center bg-dark">
+<div style="margin-top:8%; margin-left:35%; margin-right:35%; padding-top:1%; padding-bottom:2%" class="bg-white">
+    <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+        <p class="h1">Register</p>
+    <p class="h6">{{form.username.label}}</p> <p>{{form.username}}</p>
+        <p class="h6">{{form.email.label}}</p> <p>{{form.email}}</p>
+        <p class="h6">{{form.password1.label}}</p> <p>{{form.password1}}</p>
+        <p class="h6">{{form.password2.label}}</p> <p>{{form.password2}}</p>
+        <p class="h6">{{form.errors}}</p>
+        {% for error in form.error %}
+        {{error}}
+        {% endfor %}
+        <p class="text-muted">Already have an account? <a class="link-white" href="{% url 'login' %}">Login Here!</a></p>
+    <input type="submit" value="Register">
+    </form>
+</div>
+
+</body>
+</html>
